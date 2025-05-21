@@ -17,7 +17,17 @@ public:
     Dialog(QWidget *parent = nullptr);
     ~Dialog();
 
+
+private slots:
+    void append();
+
+    void on_pushButtonClear_clicked();
+
+    void on_pushButton_Save_clicked();
+
 private:
     Ui::Dialog *ui;
+    QString temp;
+    QString code;
 };
 #endif // DIALOG_H
