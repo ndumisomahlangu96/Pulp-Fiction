@@ -61,4 +61,22 @@ void Dialog::on_pushButton_Save_clicked()
     temp.clear();
     ui->pushButton_Save->setEnabled(false);
     ui->pushButton_Verify->setEnabled(true);
+    ui->label_Notify->setText("Code saved please re-enter the code and click verify");
+    QMessageBox::information(this, "Saved", ui->label_Notify->text());
+
 }
+
+void Dialog::on_pushButton_Verify_clicked()
+{
+    if (temp == code)
+    {
+        QMessageBox::information(this, "Code", "The codes match!");
+    }
+    else
+    {
+        QMessageBox::critical(this, "Code", "The codes do not match!");
+    }
+    temp.clear();
+    ui->label_Notify->setText("Enter the code and click verify");
+}
+

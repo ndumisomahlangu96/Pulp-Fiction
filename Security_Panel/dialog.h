@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,8 @@ private slots:
     void on_pushButtonClear_clicked();
 
     void on_pushButton_Save_clicked();
+
+    void on_pushButton_Verify_clicked();
 
 private:
     Ui::Dialog *ui;
