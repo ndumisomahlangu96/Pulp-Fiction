@@ -6,3 +6,8 @@ RaceCar::RaceCar(QObject *parent)
 {
 
 }
+
+void RaceCar::gofast()
+{
+    qInfo() << "ALL GAS, NO BRAKES!";
+}

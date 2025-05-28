@@ -14,17 +14,34 @@
 
 
 
-
-
-
-
-
 #include <QCoreApplication>
 #include "feline.h"
+#include "QDebug"
+#include "car.h"
+#include "racecar.h"
+
+// Dynamic cast
+// dynamic_cast can be used only with pointers and reference to objects.
+// Its purpose is to ensure that the result of the type conversion is a valid complete object of the requested object.
+
+
+void testDrive(Car* obj)
+{
+    obj->drive();
+    obj->stop();
+}
+
+void race(RaceCar* obj)
+{
+    obj->drive();
+    obj->stop();
+    obj->gofast();
+}
+
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QCoreApplication app(argc, argv);
 
     // Set up code that uses the Qt event loop here.
     // Call a.quit() or a.exit() to quit the application.
@@ -37,5 +54,18 @@ int main(int argc, char *argv[])
     // If you do not need a running Qt event loop, remove the call
     // to a.exec() or use the Non-Qt Plain C++ Application template.
 
-    return a.exec();
+    RaceCar* player1 = new RaceCar(&app);
+    testDrive(player1);     // Implicit conversion
+
+    // Correct Way - Explicit conversion
+    Car* obj = dynamic_cast<Car*>(player1);
+    // Explicity conversion
+    if (obj) testDrive(obj);
+
+    Feline* cat = new Feline(&app);
+    Car* catcar = dynamic_cast<Car*>(cat);
+    qInfo() << "CatCar" << catcar;
+    if (catcar) testDrive(catcar);
+
+    return app.exec();
 }
