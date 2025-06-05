@@ -21,11 +21,26 @@ QString Selections::selected()
 
 void Selections::setSelected(QString value)
 {
+    m_selected = " ";
 
+    for (int var = 0; var < ui->listWidget->count(); ++var)
+    {
+        QListWidgetItem *itm = ui->listWidget->item(var);
+        if (itm->text() == value)
+        {
+            itm->setSelected(true);     // Sets the selected state of the item to select.
+            m_selected = value;
+            return;
+        }
+    }
 }
 
 void Selections::on_buttonBox_accepted()
 {
+    if (ui->listWidget->currentItem())
+    {
+        m_selected = ui->listWidget->currentItem()->text();
+    }
     accept();
 }
 
