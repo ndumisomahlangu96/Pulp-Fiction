@@ -45,30 +45,43 @@ void MainWindow_Universe::on_actionOpen_triggered()
 
 void MainWindow_Universe::on_actionSave_triggered()
 {
+    QString path = QFileDialog::getSaveFileName(this,"Save file");
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly))
+    {
+        QMessageBox::critical(this,"Error", file.errorString());
+        return;
+    }
+
+    QTextStream stream(&file);
+    stream << ui->plainTextEdit->toPlainText();
+    file.close();
+    ui->statusbar->showMessage(path);
+    m_filename = path;
 
 }
 
 
 void MainWindow_Universe::on_actionCopy_triggered()
 {
-
+    ui->plainTextEdit->copy();
 }
 
 
 void MainWindow_Universe::on_actionPaste_triggered()
 {
-
+    ui->plainTextEdit->paste();
 }
 
 
 void MainWindow_Universe::on_actionCut_triggered()
 {
-
+    ui->plainTextEdit->cut();
 }
 
 
 void MainWindow_Universe::on_actionSelect_All_triggered()
 {
-
+    ui->plainTextEdit->selectAll();
 }
 
