@@ -1,0 +1,1 @@
+Qt enables developers to build applications that run on multiple operating systems like Linux, Windows, macOS, Android, and iOS, making it ideal for projects targeting diverse hardware and software environments. 
