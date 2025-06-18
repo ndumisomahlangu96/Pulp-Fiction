@@ -18,9 +18,17 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionExit_triggered();
+    void newFile();
+    void openFile();
+    void saveFile();
+    void saveFileAs();
+    void SelectNone();
+
+
 
 private:
     Ui::MainWindow *ui;
+    QString m_filename;
+    bool m_saved;
 };
 #endif // MAINWINDOW_H

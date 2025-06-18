@@ -5,7 +5,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    // Setup frontend of Text Editor App.
     ui->setupUi(this);
+    this->setCentralWidget(ui->plainTextEdit);
+
+    // Signals and slots.
+    connect(ui->actionNew,&QAction::triggered,this,&MainWindow::newFile);
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -13,9 +21,30 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionExit_triggered()
+void MainWindow::newFile()
 {
-    // This is the most common and recommended way to close a QMainWindow (or any QWidget).
-    this->close();
+    ui->plainTextEdit->clear();
+    m_filename.clear();
+    m_saved = false;
+    ui->statusbar->showMessage("New File");
 }
 
+void MainWindow::openFile()
+{
+
+}
+
+void MainWindow::saveFile()
+{
+
+}
+
+void MainWindow::saveFileAs()
+{
+
+}
+
+void MainWindow::SelectNone()
+{
+
+}
