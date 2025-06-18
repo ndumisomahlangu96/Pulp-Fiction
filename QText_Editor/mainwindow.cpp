@@ -60,15 +60,41 @@ void MainWindow::openFile()
 
 void MainWindow::saveFile()
 {
+    if (m_filename.isEmpty())
+    {
+        saveFileAs();
+        return;
+    }
+
+    QFile file(m_filename);
+    if (!file.open(QIODevice::WriteOnly))
+    {
+        QMessageBox::critical(this,"Error",file.errorString());
+        return;
+    }
+
+    QTextStream stream(&file);
+    stream << ui->plainTextEdit->toPlainText();
+    file.close();
+
+    m_saved = true;
+    ui->statusbar->showMessage(m_filename);
 
 }
 
 void MainWindow::saveFileAs()
 {
+    QString temp = QFileDialog::getSaveFileName(this,"Save File",QString(), "Text Files (*txt);; All Files (*,*)");
+    if (temp.isEmpty()) return;
+    m_filename = temp;
+    saveFile();
 
 }
 
 void MainWindow::SelectNone()
 {
-
+    QTextCursor cursor = ui->plainTextEdit->textCursor();
+    int pos = cursor.position();
+    cursor.setPosition(pos,QTextCursor::MoveMode::KeepAnchor);
+    ui->plainTextEdit->setTextCursor(cursor);
 }
