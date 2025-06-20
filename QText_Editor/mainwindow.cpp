@@ -14,9 +14,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionOpen,&QAction::triggered,this,&MainWindow::openFile);
     connect(ui->actionSave,&QAction::triggered,this,&MainWindow::saveFile);
     connect(ui->actionSave_As,&QAction::triggered,this,&MainWindow::saveFileAs);
-
-
-
+    connect(ui->actionExit,&QAction::triggered,this,&MainWindow::close);
+    connect(ui->actionCopy,&QAction::triggered,ui->plainTextEdit,&QPlainTextEdit::copy);
+    connect(ui->actionCut,&QAction::triggered,ui->plainTextEdit,&QPlainTextEdit::cut);
+    connect(ui->actionPaste,&QAction::triggered,ui->plainTextEdit,&QPlainTextEdit::paste);
+    connect(ui->actionSelect_All,&QAction::triggered,ui->plainTextEdit,&QPlainTextEdit::selectAll);
+    connect(ui->actionSelect_None,&QAction::triggered,this,&MainWindow::SelectNone);
 
     newFile();
     m_saved = true;
@@ -38,7 +41,7 @@ void MainWindow::newFile()
 
 void MainWindow::openFile()
 {
-    QString temp = QFileDialog::getOpenFileName(this,"Open File",QString(),"Text Files(*txt);; All Files(*,*)");
+    QString temp = QFileDialog::getOpenFileName(this,"Open File",QString(),"Text Files (*txt);;All Files (*,*)");
     if (temp.isEmpty()) return;
 
     m_filename = temp;
@@ -84,7 +87,7 @@ void MainWindow::saveFile()
 
 void MainWindow::saveFileAs()
 {
-    QString temp = QFileDialog::getSaveFileName(this,"Save File",QString(), "Text Files (*txt);; All Files (*,*)");
+    QString temp = QFileDialog::getSaveFileName(this,"Save File",QString(), "Text Files (*txt);;All Files (*,*)");
     if (temp.isEmpty()) return;
     m_filename = temp;
     saveFile();
@@ -95,6 +98,7 @@ void MainWindow::SelectNone()
 {
     QTextCursor cursor = ui->plainTextEdit->textCursor();
     int pos = cursor.position();
+    cursor.clearSelection();
     cursor.setPosition(pos,QTextCursor::MoveMode::KeepAnchor);
     ui->plainTextEdit->setTextCursor(cursor);
 }
