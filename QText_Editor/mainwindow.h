@@ -28,7 +28,18 @@ private slots:
     void saveFileAs();
     void SelectNone();
 
+    //private slots for menu Insert
+    void Animals();
+    void Shapes();
+    void Food();
 
+    //private slots for menu View
+    void toolbarTop();
+    void toolbarBottom();
+    void toolbarLeft();
+    void toolbarRight();
+    void toolbarFloatable();
+    void toolbarMovable();
 
 private:
     Ui::MainWindow *ui;

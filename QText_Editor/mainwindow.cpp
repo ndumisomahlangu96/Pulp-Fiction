@@ -21,6 +21,19 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSelect_All,&QAction::triggered,ui->plainTextEdit,&QPlainTextEdit::selectAll);
     connect(ui->actionSelect_None,&QAction::triggered,this,&MainWindow::SelectNone);
 
+    // Signals and slots for menu Insert.
+    connect(ui->actionAnimals,&QAction::triggered,this,&MainWindow::Animals);
+    connect(ui->actionShapes,&QAction::triggered,this,&MainWindow::Shapes);
+    connect(ui->actionFood,&QAction::triggered,this,&MainWindow::Food);
+
+    connect(ui->actionToolbar_top,&QAction::triggered,this,&MainWindow::toolbarTop);
+    connect(ui->actionToolbar_bottom,&QAction::triggered,this,&MainWindow::toolbarBottom);
+    connect(ui->actionToolbar_left,&QAction::triggered,this,&MainWindow::toolbarLeft);
+    connect(ui->actionToolbar_right,&QAction::triggered,this,&MainWindow::toolbarRight);
+
+    connect(ui->actionToolbar_floatable,&QAction::triggered,this,&MainWindow::toolbarFloatable);
+    connect(ui->actionToolbar_movable,&QAction::triggered,this,&MainWindow::toolbarMovable);
+
     newFile();
     m_saved = true;
 
@@ -41,7 +54,7 @@ void MainWindow::newFile()
 
 void MainWindow::openFile()
 {
-    QString temp = QFileDialog::getOpenFileName(this,"Open File",QString(),"Text Files (*txt);;All Files (*,*)");
+    QString temp = QFileDialog::getOpenFileName(this,"Open File",QString(),"Text Files (*.txt);;All Files (*.*)");
     if (temp.isEmpty()) return;
 
     m_filename = temp;
@@ -87,7 +100,7 @@ void MainWindow::saveFile()
 
 void MainWindow::saveFileAs()
 {
-    QString temp = QFileDialog::getSaveFileName(this,"Save File",QString(), "Text Files (*txt);;All Files (*,*)");
+    QString temp = QFileDialog::getSaveFileName(this,"Save File",QString(), "Text Files (*.txt);;All Files (*.*)");
     if (temp.isEmpty()) return;
     m_filename = temp;
     saveFile();
@@ -101,4 +114,49 @@ void MainWindow::SelectNone()
     cursor.clearSelection();
     cursor.setPosition(pos,QTextCursor::MoveMode::KeepAnchor);
     ui->plainTextEdit->setTextCursor(cursor);
+}
+
+void MainWindow::Animals()
+{
+
+}
+
+void MainWindow::Shapes()
+{
+
+}
+
+void MainWindow::Food()
+{
+
+}
+
+void MainWindow::toolbarTop()
+{
+    addToolBar(Qt::ToolBarArea::TopToolBarArea,ui->toolBar);
+}
+
+void MainWindow::toolbarBottom()
+{
+    addToolBar(Qt::ToolBarArea::BottomToolBarArea,ui->toolBar);
+}
+
+void MainWindow::toolbarLeft()
+{
+    addToolBar(Qt::ToolBarArea::LeftToolBarArea,ui->toolBar);
+}
+
+void MainWindow::toolbarRight()
+{
+    addToolBar(Qt::ToolBarArea::RightToolBarArea,ui->toolBar);
+}
+
+void MainWindow::toolbarFloatable()
+{
+
+}
+
+void MainWindow::toolbarMovable()
+{
+
 }
