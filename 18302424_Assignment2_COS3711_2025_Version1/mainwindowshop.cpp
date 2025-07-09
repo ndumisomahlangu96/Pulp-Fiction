@@ -10,7 +10,18 @@ MainWindowShop::MainWindowShop(const QString &customerName, QWidget *parent )   
 
     // Setup the default frontend(user interaction) of mainwindowshop.
     ui->labelCustomerName->setText(m_customerName);
-    ui->labelDateTime->setText(QDateTime::currentDateTime().toString());
+    //ui->labelDateTime->setText(QDateTime::currentDateTime().toString());
+    // Initialize the QTimer.
+    timer = new QTimer(this);
+
+    // Connect the timer's timeout signal to our updateDateTime slot.
+    connect(timer, &QTimer::timeout, this, &MainWindowShop::updateDateTime);
+
+    // Start the timer to update every 1000 milliseconds (1 second).
+    timer->start(1000);
+
+    // Call it once immediately to show the time when the window opens.
+    updateDateTime();
 
     // Connections signals and slots of mainwindowshop.
     // Functions to close the App.
@@ -55,7 +66,6 @@ void MainWindowShop::setupStatusbar()
     lblFile->setText("New");
     ui->statusbar->addWidget(lblFile);
 }
-
 
 void MainWindowShop::actionToolbarTop()
 {
@@ -164,5 +174,62 @@ void MainWindowShop::on_pushButtonCloseApp_clicked()
 {
     saveFile();
     MainWindowShop::close();
+}
+
+void MainWindowShop::transferLabelText()
+{
+    // Get text from QLabel.
+    QString labelTextName = ui->labelCustomerName->text();
+    QString labelTextDate = ui->labelDateTime->text();
+
+    // Append the text to QPlainTextEdit, ensuring a new line.
+    // appendPlainText automatically adds a newline before appending its argument.
+    ui->plainTextEdit->appendPlainText(labelTextName);
+    ui->plainTextEdit->appendPlainText(labelTextDate);
+}
+
+void MainWindowShop::transferComboBoxText()
+{
+    // Get the currently selected text from the QComboBox.
+    QString selectedTextType = ui->comboBoxType->currentText();
+    QString selectedTextSize = ui->comboBoxSize->currentText();
+
+    // Append the text to QPlainTextEdit, which automatically adds a newline.
+    ui->plainTextEdit->appendPlainText(selectedTextType);
+    ui->plainTextEdit->appendPlainText(selectedTextSize);
+}
+
+void MainWindowShop::transferSpinBoxValue()
+{
+    // Get the current integer value from the QSpinBox.
+    int spinBoxValue = ui->spinBox->value();
+
+    // Convert the integer to a QString to append to QPlainTextEdit.
+    QString valueString = QString::number(spinBoxValue);
+
+    // Append the string to QPlainTextEdit, which automatically adds a newline.
+    ui->plainTextEdit->appendPlainText(valueString);
+}
+
+void MainWindowShop::headingText()
+{
+    ui->plainTextEdit->appendPlainText("**************");
+    ui->plainTextEdit->appendPlainText("*Transaction*");
+    ui->plainTextEdit->appendPlainText("**************");
+}
+
+void MainWindowShop::updateDateTime()
+{
+    // Update the QLabel with the current date and time.
+    // ui->labelDateTime is assumed to be the name of your QLabel from the UI file.
+    ui->labelDateTime->setText(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+}
+
+void MainWindowShop::on_pushButtonAdd_clicked()
+{
+    headingText();
+    transferLabelText();        // Get text from QLabel.
+    transferComboBoxText();     // Get the currently selected text from the QComboBox.
+    transferSpinBoxValue();     // Get the current integer value from the QSpinBox.
 }
 

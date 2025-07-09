@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"                 // Passing text between the two different windows.
+#include <QTimer>                       // The QTimer class provides repetitive and single-shot timers.
 #include <QMessageBox>                  // The QMessageBox class provides a modal dialog for informing the user or for asking the user a question and receiving an answer.
 #include <QDateTime>                    // The QDateTime class provides date and time functions.
 #include <QFile>                        // The QFile class provides an interface for reading from and writing to files.
@@ -46,12 +47,23 @@ private slots:
     // Save the data to textfile and close the mainwindow shop.
     void on_pushButtonCloseApp_clicked();
 
+    // Functions to setup output to the plain text edit.
+    void transferLabelText();
+    void transferComboBoxText();
+    void transferSpinBoxValue();
+    void headingText();
+    void updateDateTime(); // Declare a slot to update the time
+
+    void on_pushButtonAdd_clicked();
+
 private:
     Ui::MainWindowShop *ui;
     QString m_customerName; // To store the received customer name.
 
     QString m_filename;
     bool m_saved;
+
+    QTimer *timer; // Declare a QTimer object
 
     // Functions to setup the Statusbar.
     void setupStatusbar();
