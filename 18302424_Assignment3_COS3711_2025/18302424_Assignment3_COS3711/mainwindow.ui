@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Container</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>700</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Container Code Generator</string>
+     </attribute>
+     <widget class="QLabel" name="labelIntro">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>521</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>The container code, which is allocated when containers are created, takes the following input:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelListCode">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>117</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>List of container code:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonCode">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>140</y>
+        <width>241</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Click to generate container code</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <selectedon>:/files/images/accept.png</selectedon>
+       </iconset>
+      </property>
+      <property name="autoDefault">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>363</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelYear">
+         <property name="text">
+          <string>What is the current year value between 2000 and 2099?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinBoxYear">
+         <property name="minimum">
+          <number>2000</number>
+         </property>
+         <property name="maximum">
+          <number>2099</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelMonth">
+         <property name="text">
+          <string>What is the current mont value between 01 and 12?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxMonth">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelContainer">
+         <property name="text">
+          <string>Select container type: B-Box or C-Cylinder?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBoxContainer">
+         <item>
+          <property name="text">
+           <string>B</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>C</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>22</x>
+        <y>186</y>
+        <width>451</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButtonSave">
+         <property name="text">
+          <string>Save Code</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <selectedon>:/files/images/disk.png</selectedon>
+          </iconset>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButtonRemove">
+         <property name="text">
+          <string>Remove Code</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <selectedon>:/files/images/cut.png</selectedon>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pushButtonClear_2">
+         <property name="text">
+          <string>Clear Code</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <selectedon>:/files/images/new.png</selectedon>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="4">
+        <widget class="QListWidget" name="listWidgetCode">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButtonLoad">
+         <property name="text">
+          <string>Load Code</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <selectedon>:/files/images/open.png</selectedon>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="pushButtonClose">
+         <property name="text">
+          <string>Close App</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <selectedon>:/files/images/cancel.png</selectedon>
+          </iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Weight and Volume of Container</string>
+     </attribute>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>410</y>
+        <width>600</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelList">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>360</y>
+        <width>167</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>List of total volume and weight:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonClear">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>360</y>
+        <width>248</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear Data</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/new.png</normaloff>images/new.png</iconset>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>611</width>
+        <height>328</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Box</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButtonBox">
+            <property name="text">
+             <string>Add box</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <activeon>:/files/images/accept.png</activeon>
+             </iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="labelBreadth">
+              <property name="text">
+               <string>Breadth measured in meters(m):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxBreadthBox"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="labelLength">
+              <property name="text">
+               <string>Length measured in meters(m):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxLengthBox"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="labelHeightB">
+              <property name="text">
+               <string>Height measured in meters(m):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxHeightBox"/>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QLabel" name="labelWeightB">
+              <property name="text">
+               <string>Weight measured in kilogram(kg):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QSpinBox" name="spinBoxWeightBox"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Cylinder</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="2" column="0">
+             <widget class="QLabel" name="labelWidthC">
+              <property name="text">
+               <string>Weight measured in kilogram(kg):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxDiameterCylinder"/>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxHeightCylinder"/>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="labelDiameter">
+              <property name="text">
+               <string>Diameter measured in meters(m):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="2">
+             <widget class="QSpinBox" name="spinBoxWeightCylinder"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="labelHeightC">
+              <property name="text">
+               <string>Height measured in meters(m):</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButtonCylinder">
+            <property name="text">
+             <string>Add Cylinder</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/files/images/accept.png</normaloff>:/files/images/accept.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
